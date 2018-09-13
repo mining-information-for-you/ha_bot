@@ -23,7 +23,7 @@ class Dictaphone extends Component {
             stopListening
         } = this.props;
 
-        if(recognition) recognition.lang = 'en-US';
+        if(recognition) recognition.lang = 'pt-BR';
 
         resetTextFunc(resetTranscript);
         stopListeningFunc(stopListening)
