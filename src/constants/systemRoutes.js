@@ -1,6 +1,6 @@
 export const SYSTEM_ROUTES = {
     CHATBOT: {
-        title: 'Chatbot',
+        title: 'ChatbotPage',
         route: '/',
         allowOnly: []
     },

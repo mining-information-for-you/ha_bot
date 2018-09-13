@@ -5,7 +5,7 @@ import {compose} from 'redux'
 import {TopAppBar} from "./components";
 import {ChatList, TextInput} from "./containers";
 
-class Chatbot extends Component {
+class ChatbotPage extends Component {
     render(){
         const {classes} = this.props;
         return (
@@ -21,8 +21,8 @@ class Chatbot extends Component {
     }
 }
 
-Chatbot = compose(
+ChatbotPage = compose(
     withStyles(styles, {withTheme: true}),
-)(Chatbot);
+)(ChatbotPage);
 
-export {Chatbot}
+export {ChatbotPage}

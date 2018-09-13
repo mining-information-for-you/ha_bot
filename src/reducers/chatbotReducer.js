@@ -2,7 +2,7 @@ import {ACTION_TYPES} from "../constants";
 
 const initial = {
     messagesList: null,
-    messagesData: null
+    messagesData: null,
 };
 
 

@@ -1,1 +1,1 @@
-export * from './Chatbot'
+export * from './ChatbotPage'
