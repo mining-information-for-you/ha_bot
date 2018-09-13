@@ -16,7 +16,6 @@ class VoicePlayer extends Component {
         }
 
         this.toggleAudio = this.toggleAudio.bind(this)
-
     }
 
     createSpeech = () => {
