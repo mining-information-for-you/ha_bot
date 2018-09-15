@@ -1,7 +1,6 @@
-import {sendMessageToBot as sendMessageToBotApi} from "../services";
 import {ACTION_TYPES, USER_TYPES} from "../constants";
 
-export const sendMessageToBot = (text) => (dispatch) =>
+export const sendMessageToBot = (chatbotInstance, text) => (dispatch) =>
     new Promise((resolve, reject) => {
 
         dispatch({
@@ -13,7 +12,7 @@ export const sendMessageToBot = (text) => (dispatch) =>
             }
         });
 
-        sendMessageToBotApi(text)
+        chatbotInstance.textRequest(text)
             .then(res => {
                 dispatch({
                     type: ACTION_TYPES.CHATBOT.FETCH_BOT_ANSWER.SUCCESS,
@@ -35,9 +34,9 @@ export const sendMessageToBot = (text) => (dispatch) =>
             })
     });
 
-export const sendHiToBot = () => (dispatch) =>
+export const sendHiToBot = (chatbotInstance) => (dispatch) =>
     new Promise((resolve, reject) => {
-        sendMessageToBotApi('oi')
+        chatbotInstance.textRequest('oi')
             .then(res => {
                 dispatch({
                     type: ACTION_TYPES.CHATBOT.FETCH_BOT_ANSWER.SUCCESS,
@@ -58,3 +57,7 @@ export const sendHiToBot = () => (dispatch) =>
                 reject(err)
             })
     });
+
+export const cleanAllChatbotMessages = () => ({
+    type: ACTION_TYPES.CHATBOT.CLEAN_ALL_MESSAGES
+});

@@ -24,6 +24,12 @@ export default (state = initial, action) => {
                     [action.payload.id]: action.payload
                 },
             };
+        case ACTION_TYPES.CHATBOT.CLEAN_ALL_MESSAGES:
+            return {
+                ...state,
+                messagesList: null,
+                messagesData: null,
+            };
         default:
             return state
     }

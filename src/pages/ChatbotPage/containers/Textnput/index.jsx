@@ -4,10 +4,12 @@ import {styles} from "./styles";
 import {compose} from 'redux'
 import {connect} from 'react-redux'
 import classNames from 'classnames';
-import {sendMessageToBot} from "../../../../actions";
+import {sendMessageToBot, sendHiToBot} from "../../../../actions";
 import {Field, reduxForm} from 'redux-form'
 import {Dictaphone, LoadingFabButton} from "../../../../components";
 import {Send as SendIcon} from '@material-ui/icons';
+import {ACCESS_TOKEN} from "../../../../constants";
+import {ApiAiClient} from "../../../../api-ai-javascript/es6/ApiAiClient";
 
 class TextInput extends Component {
 
@@ -16,11 +18,26 @@ class TextInput extends Component {
         typing: false,
         resetMicFunc: null,
         stopListeningMicFunc: null,
+        chatbotInstance: null,
     };
 
     constructor(props) {
         super(props);
         this._onSubmit = this._onSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        const botInstance =  new ApiAiClient({
+            accessToken: ACCESS_TOKEN
+        });
+
+        this.setState({
+            chatbotInstance: botInstance,
+        }, () => {
+            setTimeout(() => {
+                this.props.sendHiToBot(this.state.chatbotInstance)
+            }, 500);
+        });
     }
 
     _onSubmit(values) {
@@ -29,7 +46,7 @@ class TextInput extends Component {
         this.state.resetMicFunc();
         this.state.stopListeningMicFunc();
         return new Promise((resolve, reject) => {
-            this.props.sendMessageToBot(inputValue)
+            this.props.sendMessageToBot(this.state.chatbotInstance, inputValue)
                 .then(() => resolve())
                 .catch(() => reject())
         });
@@ -77,7 +94,7 @@ class TextInput extends Component {
 
 TextInput = compose(
     withStyles(styles, {withTheme: true}),
-    connect(null, {sendMessageToBot}),
+    connect(null, {sendMessageToBot, sendHiToBot}),
     reduxForm({
         form: 'BotInput',
     }),

@@ -1,7 +1,12 @@
 export const SYSTEM_ROUTES = {
     CHATBOT: {
-        title: 'ChatbotPage',
-        route: '/',
-        allowOnly: []
+        TITLE: 'ChatbotPage',
+        ROUTE: '/bot',
+        ALLOW_ONLY: []
     },
+    HOME: {
+        TITLE: '',
+        ROUTE: '/',
+        ALLOW_ONLY: []
+    }
 };

@@ -1,7 +1,5 @@
-import green from '@material-ui/core/colors/green';
 
-
-export const styles = theme => ({
+export const styles = () => ({
     buttonContainer: {
         width: '16.6667%',
         textAlign: 'right',

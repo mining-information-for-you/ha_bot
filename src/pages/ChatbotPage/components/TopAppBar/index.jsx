@@ -7,6 +7,7 @@ import {
     Toolbar,
     Typography
 } from '@material-ui/core';
+import './styles.css'
 
 class TopAppBar extends Component {
     render() {
@@ -16,7 +17,7 @@ class TopAppBar extends Component {
                 <AppBar
                     position="absolute"
                     classes={{
-                        root: classes.appBar
+                        root: 'topBarBackgrond'
                     }}
                 >
                     <Toolbar>

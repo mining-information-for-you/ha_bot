@@ -6,19 +6,12 @@ import {connect} from 'react-redux'
 import _ from 'lodash'
 import {USER_TYPES} from "../../../../constants";
 import {ChatListItem} from "../../components";
-import {sendHiToBot} from "../../../../actions";
 
 class ChatList extends Component {
 
     constructor(props) {
         super(props);
         this._renderMessagesList = this._renderMessagesList.bind(this)
-    }
-
-    componentDidMount(){
-        setTimeout(() => {
-            this.props.sendHiToBot()
-        }, 500)
     }
 
     _renderMessagesList() {
@@ -79,7 +72,7 @@ const mapStateToProps = (state) => ({
 
 ChatList = compose(
     withStyles(styles, {withTheme: true}),
-    connect(mapStateToProps, {sendHiToBot})
+    connect(mapStateToProps)
 )(ChatList);
 
 export {ChatList}
