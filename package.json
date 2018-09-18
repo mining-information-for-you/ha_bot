@@ -1,11 +1,11 @@
 {
-  "name": "emme_web",
+  "name": "ha_bot",
   "version": "0.1.0",
   "homepage": "http://mining-information-for-you.github.io/ha_bot",
   "private": false,
   "scripts": {
-    "predeploy":"npm run build",
-    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -17,6 +17,7 @@
     "axios": "^0.18.0",
     "babel-preset-stage-1": "^6.1.18",
     "css-loader": "^0.28.11",
+    "gh-pages": "^2.0.0",
     "lodash": "4.17.10",
     "material-ui": "^0.20.1",
     "moment": "^2.22.2",
@@ -35,8 +36,5 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "style-loader": "^0.21.0"
-  },
-  "devDependencies": {
-    "gh-pages": "^2.0.0"
   }
 }
