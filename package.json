@@ -1,7 +1,7 @@
 {
   "name": "ha_bot",
   "version": "0.1.0",
-  "homepage": "http://mining-information-for-you.github.io/ha_bot",
+  "homepage": "http://mining-information-for-you.github.io/ha_bot/bot",
   "private": false,
   "scripts": {
     "predeploy": "npm run build",
