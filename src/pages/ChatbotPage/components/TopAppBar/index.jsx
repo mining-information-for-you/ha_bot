@@ -29,7 +29,7 @@ class TopAppBar extends Component {
                                 root: classes.TypographyTabBar
                             }}
                         >
-                            EMME
+                            HA BOT
                         </Typography>
                     </Toolbar>
                 </AppBar>
