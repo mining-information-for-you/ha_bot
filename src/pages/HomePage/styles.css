@@ -2,7 +2,7 @@
     align-items: center;
     box-shadow: none !important;
 
-    background: linear-gradient(46deg, #9587e5, #57bbc5, #879ee8, #5db1b9);
+    background: linear-gradient(46deg,#cc0066, #ff7ea7, #e6197f, #ff95b5);
     background-size: 800% 800%;
 
     -webkit-animation: gradientBackground 15s ease infinite;

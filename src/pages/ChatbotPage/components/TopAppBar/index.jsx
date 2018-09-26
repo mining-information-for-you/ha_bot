@@ -29,7 +29,7 @@ class TopAppBar extends Component {
                                 root: classes.TypographyTabBar
                             }}
                         >
-                            HA BOT
+                            MIA - Mamografia Inteligência Artificial
                         </Typography>
                     </Toolbar>
                 </AppBar>
