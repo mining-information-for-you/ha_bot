@@ -7,13 +7,13 @@ import {ChatList, TextInput} from "./containers";
 
 class ChatbotPage extends Component {
     render(){
-        const {classes} = this.props;
+        const {classes, history} = this.props;
         return (
            <div className={classes.root}>
                <TopAppBar/>
                <main className={classes.content}>
                    <div className={classes.toolbar}/>
-                   <ChatList/>
+                   <ChatList history={history}/>
                    <TextInput/>
                </main>
            </div>

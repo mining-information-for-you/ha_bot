@@ -6,12 +6,20 @@ import {connect} from 'react-redux'
 import _ from 'lodash'
 import {USER_TYPES} from "../../../../constants";
 import {ChatListItem} from "../../components";
+import moment from 'moment'
+
+const TIMER_LIMIT = moment.duration(30, 's').asSeconds();
 
 class ChatList extends Component {
+    state = {
+        timerValue: TIMER_LIMIT,
+        timerIntervalInstance: null
+    };
 
     constructor(props) {
         super(props);
-        this._renderMessagesList = this._renderMessagesList.bind(this)
+        this._runTimer = this._runTimer.bind(this);
+        this._renderMessagesList = this._renderMessagesList.bind(this);
     }
 
     _renderMessagesList() {
@@ -32,22 +40,50 @@ class ChatList extends Component {
                 <ChatListItem
                     key={`list_${message.id}`}
                     message={message}
-                    onCharacterTyped={() => this.scrollToBottom()}
+                    onCharacterTyped={() => this._scrollToBottom()}
                     {...itemOptions}
                 />
             )
         })
     }
 
-    scrollToBottom() {
+    _scrollToBottom() {
         const scrollHeight = this.messageList.scrollHeight;
         const height = this.messageList.clientHeight;
         const maxScrollTop = scrollHeight - height;
         this.messageList.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
     }
 
-    componentDidUpdate() {
-        this.scrollToBottom();
+    componentDidUpdate(prevProps) {
+        this._scrollToBottom();
+
+        if (_.map(prevProps.messagesList).length !== _.map(this.props.messagesList).length) {
+            this._runTimer();
+        }
+    }
+
+    componentWillUnmount() {
+        if (this.state.timerIntervalInstance) {
+            clearInterval(this.state.timerIntervalInstance)
+        }
+    }
+
+    _runTimer() {
+        if (this.state.timerIntervalInstance) {
+            clearInterval(this.state.timerIntervalInstance)
+        }
+
+        const newInterval = setInterval(() => {
+            if (this.state.timerValue > 0) {
+                return this.setState({timerValue: moment.duration(this.state.timerValue, 's').subtract(1, 's').asSeconds()});
+            }
+            return this.props.history.push('/')
+        }, 1000);
+
+        this.setState({
+            timerValue: TIMER_LIMIT,
+            timerIntervalInstance: newInterval
+        })
     }
 
     render() {
